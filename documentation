@@ -1,0 +1,172 @@
+# Recipe CRUD API Documentation
+
+This API allows users to perform CRUD operations on recipes. The base URL for the API is:
+
+`https://recipesdata-nodejs.onrender.com/api/receipes`
+
+---
+
+## Endpoints
+
+### 1. **Create a Recipe**
+   - **Endpoint**: `/createRecipe`
+   - **Method**: `POST`
+   - **Description**: Adds a new recipe to the database.
+   - **Request Body**: 
+     - `recipename`: String (name of the recipe)
+     - `cookTime`: Number (time required to cook, in hours)
+     - `price`: Number (price of the recipe)
+   - **Sample Response**:
+     ```json
+     {
+         "message": "recipes added Successfully",
+         "data": {
+             "recipename": "soup",
+             "cookTime": 1,
+             "price": 200,
+             "_id": "671bf214915e4b194d678cdd",
+             "__v": 0
+         }
+     }
+     ```
+
+---
+
+### 2. **Get All Recipes**
+   - **Endpoint**: `/getRecipe`
+   - **Method**: `GET`
+   - **Description**: Retrieves a list of all recipes stored in the database.
+   - **Sample Response**:
+     ```json
+     {
+         "message": "recipes retrieved successfully",
+         "data": [
+             {
+                 "_id": "671bc8410a4be9a1f59b2d3d",
+                 "recipename": "briyani",
+                 "cookTime": 1,
+                 "price": 250,
+                 "__v": 0
+             },
+             {
+                 "_id": "671bf0a0915e4b194d678cd5",
+                 "recipename": "pasta",
+                 "cookTime": 1,
+                 "price": 200,
+                 "__v": 0
+             },
+             {
+                 "_id": "671bf1e8915e4b194d678cdb",
+                 "recipename": "fried rice",
+                 "cookTime": 1,
+                 "price": 150,
+                 "__v": 0
+             },
+             {
+                 "_id": "671bf214915e4b194d678cdd",
+                 "recipename": "soup",
+                 "cookTime": 1,
+                 "price": 200,
+                 "__v": 0
+             }
+         ]
+     }
+     ```
+
+---
+
+### 3. **Get Recipe by ID**
+   - **Endpoint**: `/getRecipe/:id`
+   - **Method**: `GET`
+   - **Description**: Retrieves a recipe by its unique ID.
+   - **Path Parameter**:
+     - `id`: String (unique identifier for the recipe)
+   - **Sample Request**:
+     ```
+     GET /getRecipe/671bc8410a4be9a1f59b2d3d
+     ```
+   - **Sample Response**:
+     ```json
+     {
+         "message": "recipes retrieved successfully",
+         "data": {
+             "_id": "671bc8410a4be9a1f59b2d3d",
+             "recipename": "soup",
+             "cookTime": 1,
+             "price": 200,
+             "__v": 0
+         }
+     }
+     ```
+
+---
+
+### 4. **Update a Recipe**
+   - **Endpoint**: `/updateRecipe/:id`
+   - **Method**: `PUT`
+   - **Description**: Updates a recipe's details by its unique ID.
+   - **Path Parameter**:
+     - `id`: String (unique identifier for the recipe)
+   - **Request Body**:
+     - `recipename`: String (updated name of the recipe)
+     - `cookTime`: Number (updated cook time in hours)
+     - `price`: Number (updated price of the recipe)
+   - **Sample Request**:
+     ```
+     PUT /updateRecipe/671bc8410a4be9a1f59b2d3d
+     ```
+   - **Sample Response**:
+     ```json
+     {
+         "message": "recipes Updated",
+         "data": {
+             "_id": "671bc8410a4be9a1f59b2d3d",
+             "recipename": "soup",
+             "cookTime": 1,
+             "price": 200,
+             "__v": 0
+         }
+     }
+     ```
+
+---
+
+### 5. **Delete a Recipe**
+   - **Endpoint**: `/deleteRecipe/:id`
+   - **Method**: `DELETE`
+   - **Description**: Deletes a recipe by its unique ID.
+   - **Path Parameter**:
+     - `id`: String (unique identifier for the recipe)
+   - **Sample Request**:
+     ```
+     DELETE /deleteRecipe/671bf1d6915e4b194d678cd9
+     ```
+   - **Sample Response**:
+     ```json
+     {
+         "message": "recipes deleted",
+         "data": [
+             {
+                 "_id": "671bc8410a4be9a1f59b2d3d",
+                 "recipename": "soup",
+                 "cookTime": 1,
+                 "price": 200,
+                 "__v": 0
+             },
+             {
+                 "_id": "671bf0a0915e4b194d678cd5",
+                 "recipename": "pasta",
+                 "cookTime": 1,
+                 "price": 200,
+                 "__v": 0
+             },
+             {
+                 "_id": "671c5e4e1ca4b98ee8df892c",
+                 "recipename": "soup",
+                 "cookTime": 1,
+                 "price": 200,
+                 "__v": 0
+             }
+         ]
+     }
+    
